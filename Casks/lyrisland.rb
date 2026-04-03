@@ -11,6 +11,12 @@ cask "lyrisland" do
 
   app "Lyrisland.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Lyrisland.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Caches/com.wangjiyuan.Lyrisland",
     "~/Library/Preferences/com.wangjiyuan.Lyrisland.plist",
